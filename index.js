@@ -14,7 +14,7 @@ const PORT=4000;
 
 dotenv.config()
 
-mongoose.connect("mongodb://localhost:27017/vendor").
+mongoose.connect(process.env.MONGO_URL).
 then(()=>console.log("mongodb connected successfully"))
 .catch((error)=>console.log(error));
 

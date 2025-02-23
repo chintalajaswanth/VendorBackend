@@ -1,6 +1,6 @@
 const Vendor=require("../models/vendor")
 const jwt=require("jsonwebtoken")
-const secretKey="MyNameIsJazz"
+const secretKey=process.env.WhatIsYourName;
 const verifyToken=async(req,res,next)=>
 {
 

@@ -2,7 +2,7 @@ const Vendor=require("../models/vendor")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
 
-const secretKey="MyNameIsJazz";
+const secretKey=process.env.WhatIsYourName;
 const vendorRegister=async(req,res)=>{
     const {username,email,password}=req.body;
     try{
