@@ -10,7 +10,7 @@ const { rawListeners } = require("./models/vendor");
 const path=require("path")
 const cors=require("cors")
 const app=express()
-const PORT=4000;
+const PORT=process.env.PORT||4000;
 
 dotenv.config()
 
@@ -26,7 +26,7 @@ app.use("/uploads",express.static('uploads'));
 app.listen(PORT,()=>console.log(`server started running at ${PORT}`))
 
 
-app.use("/home",(req,res)=>
+app.use("/",(req,res)=>
 {
     res.send("<h1> Welcome to jazz</h1>");
 })
