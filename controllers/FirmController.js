@@ -1,5 +1,5 @@
 const Firm=require("../models/Firm")
-
+const path=require("path")
 const Vendor=require("../models/vendor")
 const multer=require("multer")
     
@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
       cb(null, "uploads/"); 
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+      cb(null, Date.now() + path.extname(file.originalname));
     },
   });
   const upload = multer({ storage: storage });

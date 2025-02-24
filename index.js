@@ -5,7 +5,7 @@ const vendorRoutes=require("./routes/VendorRoutes")
 const firmRoutes=require("./routes/Firmroutes")
 const bodyParser=require("body-parser")
 const productRoutes=require("./routes/ProductRoutes");
-const { rawListeners } = require("./models/vendor");
+
 
 const path=require("path")
 const cors=require("cors")
@@ -13,7 +13,7 @@ const app=express()
 const PORT=process.env.PORT||4000;
 
 dotenv.config()
-
+app.use(cors())
 mongoose.connect(process.env.MONGO_URL).
 then(()=>console.log("mongodb connected successfully"))
 .catch((error)=>console.log(error));

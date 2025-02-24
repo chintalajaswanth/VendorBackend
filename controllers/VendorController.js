@@ -1,8 +1,9 @@
 const Vendor=require("../models/vendor")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs")
-
-const secretKey=process.env.WhatIsYourName;
+const dotenv=require("dotenv")
+dotenv.config();
+const secretKey=process.env.WhatIsYourName||"MyNameIsjazz";
 const vendorRegister=async(req,res)=>{
     const {username,email,password}=req.body;
     try{
