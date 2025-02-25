@@ -2,7 +2,7 @@ const Firm=require("../models/Firm")
 const path=require("path")
 const Vendor=require("../models/vendor")
 const multer=require("multer")
-    
+const Product=require("../models/Product")
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, "uploads/"); 
@@ -33,11 +33,16 @@ const addFirm=async(req,res)=>{
 
     await firm.save();
      const savedFirm=await firm.save();
+
+     const FirmId=savedFirm._id;
     vendor.firm.push(savedFirm)
 
     await vendor.save();
-
-    return res.status(200).json({message:"Firm added success fully"})
+   if(vendor.firm.length>1)
+   {
+  return res.status(400).json({message:"vendor can have only onr firm"})
+   }
+    return res.status(200).json({message:"Firm added success fully",FirmId})
 }
 catch(error)
 {
@@ -95,4 +100,4 @@ const deleteFirmById=async(req,res)=>{
 }
 
 
-module.exports={addFirm:[upload.single('image'),addFirm],deleteFirmById}
+module.exports={addFirm:[upload.single('image'),addFirm],deleteFirmById,addproduct}
